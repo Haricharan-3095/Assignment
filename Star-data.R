@@ -86,9 +86,29 @@ bp <- barplot(star_counts,
 text(bp, star_counts, labels = star_counts,
      pos = 3, cex = 0.8)
 
+cor(Stars$`Radius(R/Ro)`,Stars$`Luminosity(L/Lo)`) # Radius and Luminosity
+cor(Stars$`Temperature (K)`,Stars$`Luminosity(L/Lo)`)#Temperature and Luminosity
+
+# Luminosity and Absolute Magnitude
+cor(Stars$`Luminosity(L/Lo)`, Stars$`Abs Magnitude (Mv)`)
+
+# Radius and Absolute Magnitude
+cor(Stars$`Radius(R/Ro)`,Stars$`Abs Magnitude (Mv)`)
+
+# Temperature and Absolute Magnitude
+cor(Stars$`Temperature (K)`, Stars$`Abs Magnitude (Mv)`)
 
 
+# Investigation Plan (4b)
 
+Stars$Color <- trimws(Stars$Color)     # Remove extra spaces from colour names
+
+# Replace different spellings of Blue-white with one standard name
+Stars$Color[Stars$Color %in% c("Blue-White",
+                               "Blue white", "Blue White")] <- "Blue-white"
+
+Stars$Color[Stars$Color == "white"] <- "White" # Change lowercase white to White
+print(table(Stars$Color))   # Display the updated colour names and their counts
 
 
 
