@@ -4,7 +4,7 @@
 #Dataset Format :6_class_csv.csv (csv_format)
 
 
-Part 1- Dataset Fundamentals (1a,1b)
+#Part 1- Dataset Fundamentals (1a,1b)
 
 library(readr)                           # Load the readr package
 Stars <- read_csv("6 class csv.csv")     # Import the dataset
