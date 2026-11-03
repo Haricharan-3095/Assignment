@@ -4,7 +4,7 @@
 #Dataset Format :6_class_csv.csv (csv_format)
 
 
-#Part 1- Dataset Fundamentals (1a,1b)
+#Part 1- Dataset Fundamentals
 
 library(readr)                           # Load the readr package
 Stars <- read_csv("6 class csv.csv")     # Import the dataset
@@ -20,6 +20,7 @@ colnames(Stars)[4] <- "Abs Magnitude (Mv)"
 colnames(Stars)[5] <- "Type"
 colnames(Stars)[6] <- "Color"     # Rename columns for easier understanding
 
+#Part 1b
 
 #"Abs Magnitude(Mv)"renamed from “Absolute Magnitude”
 #Based on Kaggle data description "StarName" Column is created. 
@@ -39,7 +40,10 @@ print(head(Stars[, c("Temperature (K)",
 
 
 
-#Part 2 – Descriptive Statistics (2a,2b)
+#Part 2 – Descriptive Statistics
+
+
+#Part 2a
 
 #Calculate means values of each Column
 print(mean(Stars$`Temperature (K)`))      
@@ -65,15 +69,19 @@ summary(Stars$`Luminosity(L/Lo)`)
 summary(Stars$`Radius(R/Ro)`)
 summary(Stars$`Abs Magnitude (Mv)`)
 
-print(table(Stars$Color))                      # Frequency of each star colour         
+print(table(Stars$Color))                      # Frequency of each star colour
 
-print(table(Stars$Type))         #Each of the six star types contains 40 stars.
+#Part 2b
+
+#The most surprising thing:Each of the six star types contains 40 stars. 
+print(table(Stars$Type))
+# Count stars in each spectral class M(111) is having most coolest stars 
+print(table(Stars$`Spectral Class`))
 
 
-#Part 3 – A Simple Graph (3a,3b)
-# Count each spectral class
-star_counts <- table(Stars$`Spectral Class`)
+#Part 3 – A Simple Graph
 
+#Part 3b
 # Create barplot
 bp <- barplot(star_counts,
               main = "Distribution of Stars by Spectral Class",
@@ -82,9 +90,8 @@ bp <- barplot(star_counts,
               col = "lightblue",
               ylim = c(0, 125))
 
-# Add count labels
-text(bp, star_counts, labels = star_counts,
-     pos = 3, cex = 0.8)
+
+# Investigation Plan 4a
 
 cor(Stars$`Radius(R/Ro)`,Stars$`Luminosity(L/Lo)`) # Radius and Luminosity
 cor(Stars$`Temperature (K)`,Stars$`Luminosity(L/Lo)`)#Temperature and Luminosity
@@ -99,7 +106,7 @@ cor(Stars$`Radius(R/Ro)`,Stars$`Abs Magnitude (Mv)`)
 cor(Stars$`Temperature (K)`, Stars$`Abs Magnitude (Mv)`)
 
 
-# Investigation Plan (4b)
+#Part 4b
 
 Stars$Color <- trimws(Stars$Color)     # Remove extra spaces from colour names
 
